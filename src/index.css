@@ -1,13 +1,91 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  list-style: none;
+}
+:root{
+  --main-bg : #E4E9F7;
+
+  --light-white: #f0f0f0;
+  --light-white-p: #6c757d;
+  --color-main: #2E3F97;  
+  --color-main-light: #53b6fd;  
+  --color-anchor: #0d6efd;
+  --color-blue: #4d8aff;
+  --color-dark-blue: #004269;
+  --color-blu : #4387c0;
+  --color-blue-light : #00AAA9;
+  --color-orange : orange;
+  --color-green : rgb(44, 185, 16);
+
+  --border-color-1 : rgba(101, 119, 134, 0.36);
+  --transition-3: all 300ms ease-in;
+  --transition-4: all 400ms ease-in;
+}
+body{
+  background: var(--light-white) !important;
+  overflow-x: hidden;
+}
+body .rightside{
+  margin-top: 4rem;
+  margin-left: 250px;
+  padding: 1rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+a{
+  color: inherit;
+  text-decoration: none;
+}
+ol, ul {
+  padding-left: 0rem;
+  margin-bottom: 0rem;
+}
+@media only screen and (max-width: 768px){
+  body .rightside{
+    margin-left: 0px;
+  }
+}
+
+
+/* ---- Breadcrumb ---  */
+.bread{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--color-main-light);
+  border-top: 2px solid var(--color-main-light);
+  padding: 0.5rem 0rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.bread h4{
+  margin-bottom: 0rem;
+  color: var(--color-main);
+}
+.bread .links a{
+  font-size: 1.1rem;
+  color: white;
+  background: var(--color-main-light);
+  padding: 0.4rem 1rem;
+}
+
+/* --  */
+.filteration {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--color-main-light);
+  padding: 0.5rem 0rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.filteration option , 
+.filteration select ,
+.filteration input{
+  outline: none;
+  border: 1px solid var(--color-main-light) ;
 }
