@@ -1,7 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
 import { Link } from 'react-router-dom'
 
 const AllCategory = () => {
+    const [categories, setCategories] = useState([]);
+
+    const handleFetch = async ()=>{
+        try {
+            const res = await axios.get('http://localhost:9875/api/v1/get-all-category');
+            setCategories(res.data.data)
+            console.log(categories)
+        } catch (error) {
+            console.error('There was an error fetching the categories!', error);
+        }
+    }
+
+    useEffect(() => {
+        handleFetch();
+    }, []);
+
+    const handleDelete =async ()=>{
+        try {
+            const res = await axios.delete(`http://localhost:9875/api/v1/delete-category/${id}`);
+            console.log(res.data)
+            toast.success("Product Deleted Successfully")
+            handleFetch();
+        } catch (error) {
+            console.error(error)
+            toast.error(error.response.data.message)
+        }
+    }
+
     return (
         <>
             <div className="bread">
@@ -9,7 +39,7 @@ const AllCategory = () => {
                     <h4>All Category List </h4>
                 </div>
                 <div className="links">
-                    <Link className="add-new">Add New <i class="fa-solid fa-plus"></i></Link>
+                    <Link to="/add-category" className="add-new">Add New <i class="fa-solid fa-plus"></i></Link>
                 </div>
             </div>
 
@@ -26,8 +56,8 @@ const AllCategory = () => {
                 </div>
             </div>
 
-            <section className="d-table">
-                <table class="table">
+            <section className="d-table ">
+                <table class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
                             <th scope="col">Sr.No.</th>
@@ -39,13 +69,18 @@ const AllCategory = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
+                        {categories.map((category, index) => (
+                            <tr key={category._id}>
+                                <th scope="row">{index + 1}</th>
+                                <td>{category.categoryName}</td>
+                                <td><img src={category.categoryImage} alt={category.categoryName} /></td>
+                                <td><input type="checkbox" checked={category.categoryActive ? true : false} readOnly /></td>
+                                <td><Link to={``} className="bt edit">Edit <i class="fa-solid fa-pen-to-square"></i></Link></td>
+                                <td><Link onClick={()=>{handleDelete(category._id)}} className="bt delete">Delete <i class="fa-solid fa-trash"></i></Link></td>
+                            </tr>
+                        ))}
                     </tbody>
+
                 </table>
             </section>
         </>
