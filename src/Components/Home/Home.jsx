@@ -5,6 +5,7 @@ import Header from '../Header/Header'
 import Dashboard from '../../Pages/Dashboard/Dashboard'
 import AllCategory from '../../Pages/Category/AllCategory'
 import AddCategory from '../../Pages/Category/AddCategory'
+import EditCategory from '../../Pages/Category/EditCategory'
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
 
           <Route path={"/all-category"} element={<AllCategory/>}/>
           <Route path={"/add-category"} element={<AddCategory/>}/>
+          <Route path={"/edit-category/:id"} element={<EditCategory/>}/>
 
         </Routes>
       </div>

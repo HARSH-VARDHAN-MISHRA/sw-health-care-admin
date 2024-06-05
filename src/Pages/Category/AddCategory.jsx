@@ -10,7 +10,7 @@ const AddCategory = () => {
         categoryImage: null,
         categoryActive: false
     });
-
+    const [isLoading, setIsloding] = useState(false)
     const handleChange = (event) => {
         const { name, value, type, checked } = event.target;
         if (type === 'checkbox') {
@@ -33,6 +33,8 @@ const AddCategory = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setIsloding(true)
+        console.log(formData)
         const data = new FormData();
         data.append('categoryName', formData.categoryName);
         data.append('categoryImage', formData.categoryImage);
@@ -44,9 +46,13 @@ const AddCategory = () => {
                     'Content-Type': 'multipart/form-data'
                 }
             });
+            setIsloding(false)
+
             toast.success("Category Added Successfully !!");
             window.location.href = '/all-category';
         } catch (error) {
+            setIsloding(false)
+
             console.error('Error:', error);
             toast.error(error.response?.data?.message || 'An error occurred');
         }
@@ -83,7 +89,7 @@ const AddCategory = () => {
                         </div>
                     </div>
                     <div className="col-12 text-center">
-                        <button type="submit" className="">Add Category</button>
+                        <button type="submit" disabled={isLoading} className={`${isLoading ? 'not-allowed':'allowed'}`}>{isLoading ? "Please Wait..." : "Add Category"}</button>
                     </div>
                 </form>
             </div>
