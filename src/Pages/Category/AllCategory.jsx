@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const AllCategory = () => {
     const [categories, setCategories] = useState([]);
+
+    // --- Pagination ---
     const [currentPage, setCurrentPage] = useState('1')
     const itemPerPage = 8
 
@@ -25,9 +27,11 @@ const AllCategory = () => {
         setCurrentPage(pageNumber);
     };
 
+    // --- Pagination ---
     const indexOfLastItem = currentPage * itemPerPage;
     const indexOfFirstItem = indexOfLastItem - itemPerPage;
     const currentItems = categories.slice(indexOfFirstItem, indexOfLastItem)
+
     useEffect(() => {
         handleFetch();
     }, []);
@@ -76,10 +80,10 @@ const AllCategory = () => {
 
             <div className="filteration">
                 <div className="selects">
-                    <select>
+                    {/* <select>
                         <option>Ascending Order </option>
                         <option>Descending Order </option>
-                    </select>
+                    </select> */}
                 </div>
                 <div className="search">
                     <label htmlFor="search">Search </label> &nbsp;

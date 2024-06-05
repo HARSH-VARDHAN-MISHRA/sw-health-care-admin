@@ -11,6 +11,7 @@ const AddCategory = () => {
         categoryActive: false
     });
     const [isLoading, setIsloding] = useState(false)
+    
     const handleChange = (event) => {
         const { name, value, type, checked } = event.target;
         if (type === 'checkbox') {

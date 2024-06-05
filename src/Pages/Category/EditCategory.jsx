@@ -12,6 +12,7 @@ const EditCategory = () => {
         categoryImage: null,
         categoryActive: false,
         previewImage: null // State to hold the preview image
+        
     });
 
     const [loading, setLoading] = useState(true); // Add loading state
