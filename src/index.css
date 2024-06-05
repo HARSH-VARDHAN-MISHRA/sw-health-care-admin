@@ -137,7 +137,8 @@ ol, ul {
   background: white;
   border-radius: 10px;
 }
-.form-control{
+.form-control , 
+.form-select{
   border: 1px solid var(--color-blue-light) !important;
   outline: none;
 }
@@ -155,7 +156,8 @@ ol, ul {
   background-color: var(--color-blue-light) !important;
   border-color: var(--color-blue-light) !important;
 }
-.form-check-input:focus {
+.form-check-input:focus ,
+.form-select:focus{
   border-color: var(--color-blue-light) !important;
   box-shadow: none !important;
 }
