@@ -144,7 +144,7 @@ const AddProduct = () => {
                     <h4>Add Product</h4>
                 </div>
                 <div className="links">
-                    <Link to="/all-product" className="add-new">Back <i className="fa-regular fa-circle-left"></i></Link>
+                    <Link to="/all-products" className="add-new">Back <i className="fa-regular fa-circle-left"></i></Link>
                 </div>
             </div>
 
