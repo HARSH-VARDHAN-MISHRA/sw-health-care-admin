@@ -4,4 +4,7 @@
 .not-allowed{
     cursor: not-allowed;
 }
-
+.circle-color{
+    height: 20px;
+    width: 100%;
+}
