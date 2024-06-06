@@ -96,34 +96,35 @@ const AddProduct = () => {
     useEffect(() => {
         handleFetch();
     }, [])
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsloding(true);
-        console.log(formData)
+        console.log(formData);
+    
         try {
-            const ValueData = new FormData();
-            // // Append other form data fields
+            const formData = new FormData();
+    
+            // Append other form data fields
             for (const key in formData) {
-                if (formData.hasOwnProperty(key)) {
+                if (formData.hasOwnProperty(key) && key !== 'files') {
                     formData.append(key, formData[key]);
                 }
             }
-
-            // // Append files to the FormData object
-            // if (formData.files) {
-            //     Array.from(formData.files).forEach((file, index) => {
-            //         formData.append('images', file);
-            //     });
-            // }
-
+    
+            // Append files to the FormData object
+            if (formData.files) {
+                Array.from(formData.files).forEach((file, index) => {
+                    formData.append('images', file);
+                });
+            }
+    
             // Make Axios request
             const response = await axios.post('http://localhost:9875/api/v1/create-product', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-
+    
             console.log(response.data); // Assuming you want to log the response
             toast.success('Product Added Successfully');
             setIsloding(false);
@@ -133,7 +134,7 @@ const AddProduct = () => {
             setIsloding(false);
         }
     };
-
+    
 
     return (
         <>
