@@ -16,14 +16,12 @@ const AddProduct = () => {
         productName: '',
         productDescription: '',
         productPoints: [''],
-        firstImage: '',
-        secondImage: '',
-        thirdImage: '',
-        forthImage: '',
+      
         price: '',
         discountPrice: '',
         discountPercentage: '',
         tag: '',
+       files:[],
         sku: '',
         inStock: true,
         stockQuantity: ''
@@ -34,15 +32,13 @@ const AddProduct = () => {
         const files = e.target.files;
         const fileArray = Array.from(files);
         const previews = fileArray.map(file => URL.createObjectURL(file));
-
-        setFormData((prevProduct) => ({
-            ...prevProduct,
-            files: files
+    
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            files: fileArray
         }));
-
         setImagePreviews(previews);
     };
-
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         const val = type === 'checkbox' ? checked : value;
@@ -115,27 +111,27 @@ const AddProduct = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsloding(true);
-        console.log(formData);
+        // console.log(formData);
     
         try {
-            const formData = new FormData();
+            const formDataTobeSend = new FormData();
     
             // Append other form data fields
             for (const key in formData) {
                 if (formData.hasOwnProperty(key) && key !== 'files') {
-                    formData.append(key, formData[key]);
+                    formDataTobeSend.append(key, formData[key]);
                 }
             }
     
             // Append files to the FormData object
             if (formData.files) {
                 Array.from(formData.files).forEach((file, index) => {
-                    formData.append('images', file);
+                    formDataTobeSend.append('images', file);
                 });
             }
     
             // Make Axios request
-            const response = await axios.post('http://localhost:9875/api/v1/create-product', formData, {
+            const response = await axios.post('http://localhost:9875/api/v1/create-product', formDataTobeSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
