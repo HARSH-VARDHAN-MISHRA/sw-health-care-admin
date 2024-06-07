@@ -6,6 +6,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const AddProduct = () => {
     const [categories, setCategories] = useState([]);
+    const [allTags, setTags] = useState([]);
+
+    const [isLoading, setIsloding] = useState(false)
+    const [imagePreviews, setImagePreviews] = useState([]);
 
     const [formData, setFormData] = useState({
         categoryName: '',
@@ -24,8 +28,7 @@ const AddProduct = () => {
         inStock: true,
         stockQuantity: ''
     });
-    const [isLoading, setIsloding] = useState(false)
-    const [imagePreviews, setImagePreviews] = useState([]);
+    
 
     const handleFileChange = (e) => {
         const files = e.target.files;
@@ -39,6 +42,7 @@ const AddProduct = () => {
 
         setImagePreviews(previews);
     };
+
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         const val = type === 'checkbox' ? checked : value;
@@ -93,9 +97,21 @@ const AddProduct = () => {
         }
     }
 
+    const handleTags = async () =>{
+        try {
+            const res = await axios.get('http://localhost:9875/api/v1/get-all-tag');
+            setTags(res.data.data)
+            console.log(allTags)
+        } catch (error) {
+            console.error('There was an error fetching the categories!', error);
+        }
+    }
+
     useEffect(() => {
         handleFetch();
+        handleTags();
     }, [])
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsloding(true);
@@ -234,9 +250,18 @@ const AddProduct = () => {
                     </div>
 
 
-                    <div className="col-md-4">
+                    {/* <div className="col-md-4">
                         <label htmlFor="tag" className="form-label">Tag</label>
                         <input type="text" onChange={handleChange} name='tag' value={formData.tag} className="form-control" id="tag" />
+                    </div> */}
+                    <div class="col-md-4">
+                        <label htmlFor="tag" class="form-label">Tag</label>
+                        <select onChange={handleChange} name='tag' value={formData.tag} className="form-select" id="tag">
+                            <option selected>Select Tag</option>
+                            {allTags && allTags.map((tags, index) => {
+                                return <option key={index}>{tags.title}</option>;
+                            })}
+                        </select>
                     </div>
 
                     <div className="col-md-4">
@@ -244,10 +269,10 @@ const AddProduct = () => {
                         <input type="text" onChange={handleChange} name='sku' value={formData.sku} className="form-control" id="sku" />
                     </div>
 
-                    <div className="col-md-4">
+                    {/* <div className="col-md-4">
                         <label htmlFor="inStock" className="form-label">In Stock</label>
                         <input type="checkbox" onChange={handleChange} name='inStock' checked={formData.inStock} className="form-check-input" id="inStock" />
-                    </div>
+                    </div> */}
 
                     <div className="col-md-4">
                         <label htmlFor="stockQuantity" className="form-label">Stock Quantity</label>
