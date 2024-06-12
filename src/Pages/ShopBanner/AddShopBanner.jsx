@@ -42,7 +42,7 @@ const AddShopBanner = () => {
         data.append('active', formData.active);
 
         try {
-            const response = await axios.post('http://localhost:9875/api/v1/create-sale-banner', data, {
+            const response = await axios.post('https://sw-health-care-backend.onrender.com/api/v1/create-sale-banner', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

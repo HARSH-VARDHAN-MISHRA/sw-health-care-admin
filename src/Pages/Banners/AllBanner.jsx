@@ -14,7 +14,7 @@ const AllBanner = () => {
 
     const handleFetch = async () => {
         try {
-            const res = await axios.get('http://localhost:9875/api/v1/get-all-main-banner');
+            const res = await axios.get('https://sw-health-care-backend.onrender.com/api/v1/get-all-main-banner');
             const reverseData = res.data.data
             const main = reverseData.reverse()
             setBanners(main)
@@ -48,7 +48,7 @@ const AllBanner = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await axios.delete(`http://localhost:9875/api/v1/delete-main-banner/${id}`);
+                    const res = await axios.delete(`https://sw-health-care-backend.onrender.com/api/v1/delete-main-banner/${id}`);
                     console.log(res.data);
                     toast.success("Banner Deleted Successfully");
                     handleFetch();

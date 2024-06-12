@@ -85,7 +85,7 @@ const AddProduct = () => {
 
     const handleFetch = async () => {
         try {
-            const res = await axios.get('http://localhost:9875/api/v1/get-all-category');
+            const res = await axios.get('https://sw-health-care-backend.onrender.com/api/v1/get-all-category');
             setCategories(res.data.data)
             console.log(categories)
         } catch (error) {
@@ -95,7 +95,7 @@ const AddProduct = () => {
 
     const handleTags = async () =>{
         try {
-            const res = await axios.get('http://localhost:9875/api/v1/get-all-tag');
+            const res = await axios.get('https://sw-health-care-backend.onrender.com/api/v1/get-all-tag');
             setTags(res.data.data)
             console.log(allTags)
         } catch (error) {
@@ -131,7 +131,7 @@ const AddProduct = () => {
             }
     
             // Make Axios request
-            const response = await axios.post('http://localhost:9875/api/v1/create-product', formDataTobeSend, {
+            const response = await axios.post('https://sw-health-care-backend.onrender.com/api/v1/create-product', formDataTobeSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

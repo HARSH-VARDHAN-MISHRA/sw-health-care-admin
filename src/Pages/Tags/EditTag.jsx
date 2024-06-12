@@ -39,7 +39,7 @@ const EditTag = () => {
 
     const handleFetch = async () => {
         try {
-            const res = await axios.get(`http://localhost:9875/api/v1/get-all-tag`);
+            const res = await axios.get(`https://sw-health-care-backend.onrender.com/api/v1/get-all-tag`);
             const tags = res.data.data;
             const filterData = tags.filter((item) => item._id === id);
             if (filterData.length > 0) {
@@ -60,7 +60,7 @@ const EditTag = () => {
         setBtnLoading(true)
 
         try {
-            const response = await axios.put(`http://localhost:9875/api/v1/update-tag/${id}`, formData);
+            const response = await axios.put(`https://sw-health-care-backend.onrender.com/api/v1/update-tag/${id}`, formData);
             toast.success("Tag Updated Successfully!");
             setBtnLoading(false);
             window.location.href = '/all-tags';
