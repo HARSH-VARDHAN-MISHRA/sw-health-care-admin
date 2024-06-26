@@ -63,7 +63,7 @@ const Home = () => {
 
 
 
-all-shop
+{/* all-shop */}
 
         </Routes>
       </div>
