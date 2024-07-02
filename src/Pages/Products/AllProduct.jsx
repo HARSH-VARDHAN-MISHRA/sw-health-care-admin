@@ -119,7 +119,7 @@ const AllProduct = () => {
                                 <td>{product.tag}</td>
                                 <td>{product.stockQuantity}</td>
                                 <td><Link to={`/edit-product/${product._id}`} className="bt edit">Edit <i class="fa-solid fa-pen-to-square"></i></Link></td>
-                                <td><Link onClick={() => { handleDelete(product._id) }} className="bt delete">Delete <i class="fa-solid fa-trash"></i></Link></td>
+                                <td><Link onClick={() => { handleDelete(product._id) }} className="bt delete" >Delete <i class="fa-solid fa-trash"></i></Link></td>
                             </tr>
                         ))}
                     </tbody>

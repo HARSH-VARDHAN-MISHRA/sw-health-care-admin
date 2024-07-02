@@ -17,6 +17,11 @@ import EditShopBanner from '../../Pages/ShopBanner/EditShopBanner'
 import AllTags from '../../Pages/Tags/AllTags'
 import AddTag from '../../Pages/Tags/AddTag'
 import EditTag from '../../Pages/Tags/EditTag'
+import AllVoucher from '../../Pages/Vouchers/AllVoucher'
+import CreateVoucher from '../../Pages/Vouchers/AddVoucher'
+import AllOrder from '../../Pages/Orders/AllOrder'
+import EditOrder from '../../Pages/Orders/EditOrder'
+import AllUsers from '../../Pages/Users/AllUsers'
 
 const Home = () => {
   return (
@@ -39,10 +44,11 @@ const Home = () => {
 
           
           {/* --- Orders --- */}
-          {/* <Route path={"/all-orders"} element={<EditCategory/>}/> */}
+          <Route path={"/all-users"} element={<AllUsers/>}/>
 
-          {/* --- Coupons --- */}
-          {/* <Route path={"/all-coupons"} element={<EditCategory/>}/> */}
+          {/* --- Vouchers --- */}
+          <Route path={"/all-voucher"} element={<AllVoucher/>}/>
+          <Route path={"/add-voucher"} element={<CreateVoucher/>}/>
 
           {/* --- Tags --- */}
           <Route path={"/all-tags"} element={<AllTags/>}/>
@@ -58,6 +64,10 @@ const Home = () => {
           <Route path={"/all-shop-banners"} element={<AllShopBanner/>}/>
           <Route path={"/add-shop-banner"} element={<AddShopBanner/>}/>
           <Route path={"/edit-shop-banner/:id"} element={<EditShopBanner/>}/>
+
+          {/* --- Orders --- */}
+          <Route path={"/all-orders"} element={<AllOrder/>}/>
+          <Route path={"/edit-order/:id"} element={<EditOrder/>}/>
 
           
 
