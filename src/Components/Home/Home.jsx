@@ -47,7 +47,7 @@ const Home = () => {
           <Route path={"/all-users"} element={<AllUsers/>}/>
 
           {/* --- Vouchers --- */}
-          <Route path={"/all-voucher"} element={<AllVoucher/>}/>
+          <Route path={"/all-voucher"} element={<AllVoucher/>}/>   {/* // All Vouchers */}
           <Route path={"/add-voucher"} element={<CreateVoucher/>}/>
 
           {/* --- Tags --- */}
