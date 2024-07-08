@@ -42,7 +42,7 @@ const EditCategory = () => {
 
     const handleFetch = async () => {
         try {
-            const res = await axios.get(`https://sw-health-care-backend.onrender.com/api/v1/get-all-category`);
+            const res = await axios.get(`https://api.swhealthcares.com/api/v1/get-all-category`);
             const category = res.data.data;
             const filterData = category.filter((item) => item._id === id);
             if (filterData.length > 0) {
@@ -71,7 +71,7 @@ const EditCategory = () => {
         data.append('categoryActive', formData.categoryActive);
 
         try {
-            const response = await axios.put(`https://sw-health-care-backend.onrender.com/api/v1/update-category/${id}`, data);
+            const response = await axios.put(`https://api.swhealthcares.com/api/v1/update-category/${id}`, data);
             toast.success("Category Updated Successfully!");
             setBtnLoading(false);
             window.location.href = '/all-category';

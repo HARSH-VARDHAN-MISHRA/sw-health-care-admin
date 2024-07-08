@@ -31,7 +31,7 @@ const AddTag = () => {
         setIsLoading(true);
 
         try {
-            const response = await axios.post('https://sw-health-care-backend.onrender.com/api/v1/create-tag', formData);
+            const response = await axios.post('https://api.swhealthcares.com/api/v1/create-tag', formData);
             setIsLoading(false);
             toast.success("Tag Added Successfully !!");
             // Optionally, redirect or reset the form here

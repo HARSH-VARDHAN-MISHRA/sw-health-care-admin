@@ -14,7 +14,7 @@ const AllCategory = () => {
 
     const handleFetch = async () => {
         try {
-            const res = await axios.get('https://sw-health-care-backend.onrender.com/api/v1/get-all-category');
+            const res = await axios.get('https://api.swhealthcares.com/api/v1/get-all-category');
             const reverseData = res.data.data
             const main = reverseData.reverse()
             setCategories(main)
@@ -48,7 +48,7 @@ const AllCategory = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await axios.delete(`https://sw-health-care-backend.onrender.com/api/v1/delete-category/${id}`);
+                    const res = await axios.delete(`https://api.swhealthcares.com/api/v1/delete-category/${id}`);
                     console.log(res.data);
                     toast.success("Product Deleted Successfully");
                     handleFetch();

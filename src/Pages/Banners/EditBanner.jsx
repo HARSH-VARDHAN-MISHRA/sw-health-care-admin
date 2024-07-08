@@ -42,7 +42,7 @@ const EditBanner = () => {
 
     const handleFetch = async () => {
         try {
-            const res = await axios.get(`https://sw-health-care-backend.onrender.com/api/v1/get-all-main-banner`);
+            const res = await axios.get(`https://api.swhealthcares.com/api/v1/get-all-main-banner`);
             const category = res.data.data;
             const filterData = category.filter((item) => item._id === id);
             if (filterData.length > 0) {
@@ -71,7 +71,7 @@ const EditBanner = () => {
         data.append('active', formData.active);
 
         try {
-            const response = await axios.put(`https://sw-health-care-backend.onrender.com/api/v1/update-main-banner/${id}`, data);
+            const response = await axios.put(`https://api.swhealthcares.com/api/v1/update-main-banner/${id}`, data);
             toast.success("Banner Updated Successfully!");
             setBtnLoading(false);
             window.location.href = '/all-banners';

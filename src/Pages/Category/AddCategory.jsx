@@ -42,7 +42,7 @@ const AddCategory = () => {
         data.append('categoryActive', formData.categoryActive);
 
         try {
-            const response = await axios.post('https://sw-health-care-backend.onrender.com/api/v1/create-category', data, {
+            const response = await axios.post('https://api.swhealthcares.com/api/v1/create-category', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
